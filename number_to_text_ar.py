@@ -181,7 +181,7 @@ class Num2Word_AR():
                         ret_val = "{}".format(self.arabicTwos[int(group_level)])
                 else:
                     if ret_val != "":
-                        ret_val += " و "
+                        ret_val += " و"
 
                     if tens == 1 and group_level > 0 and hundreds == 0:
                         ret_val += ""
@@ -195,11 +195,11 @@ class Num2Word_AR():
                 tens = (tens / 10) - 2
                 if ones > 0:
                     if ret_val != "" and tens < 4:
-                        ret_val += " و "
+                        ret_val += " و"
 
                     ret_val += self.digit_feminine_status(ones, group_level)
                 if ret_val != "" and ones != 0:
-                    ret_val += " و "
+                    ret_val += " و"
 
                 ret_val += self.arabicTens[int(tens)]
 
@@ -224,18 +224,14 @@ class Num2Word_AR():
 
         while temp_number > Decimal(0):
 
-            number_to_process = int(
-                Decimal(str(temp_number)) % Decimal(str(1000)))
+            number_to_process = int(Decimal(str(temp_number)) % Decimal(str(1000)))
             temp_number = int(Decimal(temp_number) / Decimal(1000))
 
-            group_description = \
-                self.process_arabic_group(number_to_process,
-                                          group,
-                                          Decimal(floor(temp_number)))
+            group_description = self.process_arabic_group(number_to_process, group, Decimal(floor(temp_number)))
             if group_description != '':
                 if group > 0:
                     if ret_val != "":
-                        ret_val = "{} و {}".format("", ret_val)
+                        ret_val = "{} و{}".format("", ret_val)
                     if number_to_process != 2:
                         if number_to_process % 100 != 1:
                             if 3 <= number_to_process <= 10:
@@ -297,4 +293,4 @@ class Num2Word_AR():
         return formatted_number
 
 
-print(Num2Word_AR().convert(561250.040, 'SAR'))
+print(Num2Word_AR().convert(561651651, 'EGP'))
